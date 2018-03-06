@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+
+import './static/css/App.css';
+
+import Header from './header'
+import Blog from './blog';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Hi!, I am a React App</h1>
-      </div>
-    );
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Blog />
+        </div>
+      </BrowserRouter>
+    )
   }
 }
 
