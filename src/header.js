@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import './static/css/header.css'
 
 class Header extends Component {
@@ -7,9 +8,16 @@ class Header extends Component {
       <div className="header">
         <header>
           <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li>
+              <NavLink
+                to={{
+                  pathname: '/',
+                  // hash: '#home',
+                  // search: '?some=true'
+                }} exact>Home</NavLink>
+            </li>
+            <li><NavLink to="/about" exact>About</NavLink></li>
+            <li><NavLink to="/boxes">Boxes</NavLink></li>
           </ul>
         </header>
       </div>
