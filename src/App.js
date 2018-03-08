@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom'
 
 import './static/css/App.css';
 
-import Header from './header'
-import Blog from './blog';
+import Header from './containers/header'
+import Blog from './components/blog';
 
 class App extends Component {
   render() {
