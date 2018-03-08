@@ -11,32 +11,32 @@ class Blog extends Component {
     this.state = {
       auth: false
     };
-    this.authComp = this.authComp.bind(this);
     this.authenticate = this.authenticate.bind(this);
+    this.checkAuth = this.checkAuth.bind(this);
   }
-  authComp() {
+  authenticate(){
+    this.setState({auth: true})
+  }
+  checkAuth() {
     return !this.state.auth ? (
       <Auth handleAuth={this.authenticate} />
     ) : (
-      <Message msg="Authenticated! Access Boxes granted" />
+      <Message msg="Authenticated!, you can access boxes now" />
     );
-  }
-  authenticate() {
-    this.setState({ auth: true });
   }
   render() {
     return (
       <div className="blog">
         <Switch>
           <Route path="/" exact component={Message} />
-          <Route path="/home" component={Message} />
-          <Route path="/auth" component={this.authComp} />
+          <Route path="/auth" exact render={this.checkAuth} />
           {this.state.auth ? (
             <Route path="/boxes" component={Boxes} />
           ) : (
-            <Message msg="You have to Authenticate first" />
+            <Redirect to="/auth" />
           )}
-          <Redirect from="*" to="/" />
+          <Route render={() => <h1>Not Found</h1>} />
+          {/* <Redirect from="*" to="/" /> */}
         </Switch>
       </div>
     );
