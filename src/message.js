@@ -3,7 +3,7 @@ import React from 'react';
 const Message = (props) => {
     return (
       <div>
-        <h1>Go to contact</h1>
+        <h1>{props.msg? props.msg: 'HOME'}</h1>
       </div>
     );
 }

@@ -16,7 +16,7 @@ class Header extends Component {
                   // search: '?some=true'
                 }} exact>Home</NavLink>
             </li>
-            <li><NavLink to="/about" exact>About</NavLink></li>
+            <li><NavLink to="/auth" exact>Auth</NavLink></li>
             <li><NavLink to="/boxes">Boxes</NavLink></li>
           </ul>
         </header>
