@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import './static/css/App.css';
+import './static/styles/App.css';
 
-import Header from './containers/header'
+import Header from './containers/header';
 import Blog from './components/blog';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -15,7 +15,7 @@ class App extends Component {
           <Blog />
         </div>
       </BrowserRouter>
-    )
+    );
   }
 }
 

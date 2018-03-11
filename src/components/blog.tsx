@@ -1,17 +1,22 @@
-import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import * as React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-// import Auth from "../containers/auth";
-// import Message from "../containers/message";
-// import Boxes from "../containers/boxes";
+import AsyncComponent from '../hoc/asyncComponent';
+const AsyncAuth = AsyncComponent(() => import('../containers/auth'));
+const AsyncMessage = AsyncComponent(() => import('../containers/message'));
+const AsyncBoxes = AsyncComponent(() => import('../containers/boxes'));
 
-import AsyncComponent from "../hoc/asyncComponent";
-const AsyncAuth = AsyncComponent(() => import("../containers/auth"));
-const AsyncMessage = AsyncComponent(() => import("../containers/message"));
-const AsyncBoxes = AsyncComponent(() => import("../containers/boxes"));
+interface BlogProps {
+  authenticate?(): void;
+  checkAuth?(): JSX.Element;
+}
 
-class Blog extends Component {
-  constructor(props) {
+interface BlogState {
+  auth: Boolean;
+}
+
+class Blog extends React.Component<BlogProps, BlogState> implements BlogProps {
+  constructor(props: BlogProps) {
     super(props);
     this.state = {
       auth: false
@@ -33,8 +38,8 @@ class Blog extends Component {
     return (
       <div className="blog">
         <Switch>
-          <Route path="/" exact component={AsyncMessage} />
-          <Route path="/auth" exact render={this.checkAuth} />
+          <Route path="/" exact={true} component={AsyncMessage} />
+          <Route path="/auth" exact={true} render={this.checkAuth} />
           {this.state.auth ? (
             <Route path="/boxes" component={AsyncBoxes} />
           ) : (

@@ -1,13 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "../static/css/header.css";
+import * as React from 'react';
+import { NavLink } from 'react-router-dom';
+import '../static/styles/header.css';
 
 const Header = () => (
   <div className="header">
     <header>
       <ul>
         <li>
-          <NavLink to="/" exact>Home</NavLink>
+          <NavLink to="/" exact={true}>
+            Home
+          </NavLink>
         </li>
         <li>
           <NavLink to="/auth">Auth</NavLink>
@@ -19,5 +21,4 @@ const Header = () => (
     </header>
   </div>
 );
-
 export default Header;
